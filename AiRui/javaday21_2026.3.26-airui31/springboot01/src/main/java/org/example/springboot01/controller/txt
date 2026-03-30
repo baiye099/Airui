@@ -1,0 +1,106 @@
+/*
+package org.example.springboot01.controller;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.example.springboot01.entity.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
+
+
+//用普通的控制器就可以
+//RestController是rest分格的控制器，是普通控制器的增强控制器
+@Controller
+@RequestMapping("/user")
+public class UserController {
+    //我们写的控制器方法实际上是一个被远程调用的方法
+    @GetMapping("/add")
+    public void addUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String name = request.getParameter("name");
+        String gender = request.getParameter("gender");
+        //我们可以用request现象对
+        //我们可以通过request对象请求http报文中请求的数据
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("text/plain; charset=UTF-8");
+        // 然后用response对象返回响应的数据
+        PrintWriter out = response.getWriter();
+        out.write("hello" + name + "," + gender);
+        out.flush();
+        out.close();
+    }
+
+    */
+/**
+     * 四个注解都可以给方法绑定注解地址
+     *
+     * @return
+     * @GetMapping 要求客户端必须用get请求 处理查询用get
+     * @PostMapping 要求客户端必须用post请求 处理新增用post
+     * @PutMapping 要求客户端必须用put请求 处理更新方法用put
+     * @DeleteMapping 要求客户端必须用delete请求 处理删除用delte
+     *//*
+
+    @PostMapping("/add2")
+    @ResponseBody//这个注解可以直接将方法的返回值，返回给HTTP客户端
+    public Object adduser2(String name, String gender) {
+        //直接用方法参数 接受http参数
+        //直接用方法返回 作为http返回
+        return "注册成功，新增用户" + name + "成功," + "性别是" + gender;
+    }
+
+    @PutMapping("/update")
+    @ResponseBody
+    public Object update(User user) {
+        //用一个Java对象作为方法参数
+        //它可以接受多个HTTP请求参数
+        //框架会自动将HTTP请求参数取出来，存储到user对象的属性中
+        return user;
+    }
+
+    @GetMapping("/info")
+    @ResponseBody
+    public Object info(User user, HttpServletRequest request) {
+        */
+/*return "";可以返回字符串
+        return map;可以返回哈希表
+        return List;可以返回List
+        return user;可以返回对象
+        request.getParameter("name");不需要自己写取值代码，让框架自己去发射
+        事实上，没有特殊需求，完全没必要定义request参数
+        例如拿到对方的IP地址*//*
+
+        String remoteAddr = request.getRemoteAddr();
+        String remoteHost = request.getRemoteHost();
+        int remotePort = request.getRemotePort();
+        //拿到对方信息是什么操作系统，是什么浏览器
+        //从请求头部获取用户的Agent信息，不同的客户端的设备不一样
+
+        String header = request.getHeader("User-Agent");
+        Map<String, Object> map = new HashMap<>();
+        map.put("你的IP", remoteHost);
+        map.put("你的端口", remotePort);
+        map.put("你的设备信息", header);
+        return map;
+    }
+
+    @DeleteMapping("/delete")
+    //用普通Controller方法需要每个数据都写注解@ResponseBody返回客户端
+    @ResponseBody//用RestController就不需要增加这个注解了
+    public Object delete(Integer id) {
+        //伪代码省略了删除数据库业务流程
+        return "删除" + id + "成功";
+    }
+    //官方推荐，如果请求参数只有一个id，建议用新式的格式，语义要清晰
+//新型URL格式：http://localhost:8081/bbb/user/delete/999
+    @DeleteMapping("/delete2/{id}")
+    @ResponseBody
+    public Object delete2(@PathVariable("id") Integer id) {
+        return "删除" + id + "成功";
+    }
+}
+*/

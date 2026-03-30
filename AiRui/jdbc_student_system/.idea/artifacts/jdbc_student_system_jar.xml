@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="jdbc_student_system:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jdbc_student_system_jar</output-path>
+    <root id="archive" name="jdbc_student_system.jar">
+      <element id="module-output" name="jdbc_student_system" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jdbc_student_system/out/artifacts/jdbc_student_system_jar/jdbc_student_system.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../MySQL/mysql-connector-j-9.3.0/mysql-connector-j-9.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="F:/QQ下载/commons-codec-1.16.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="F:/QQ下载/jBCrypt-0.4.1.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

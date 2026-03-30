@@ -1,0 +1,33 @@
+server:
+  port: 80
+  servlet:
+    context-path: /apiz
+
+spring:
+  web:
+    resources:
+      static-locations: file:D:\Desktop\upload\files
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+
+file:
+  upload:
+    base-path: D:/Desktop/upload/files
+    avatar:
+      max-size: 4194304
+      dir: avatar
+      allow-types: image/jpeg,image/png,image/jpg
+    id-card:
+      allow-types: image/jpeg,image/png,image/jpg
+      max-size: 4194304
+      dir: idcard
+    document:
+      allow-types: application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      dir: document
+      max-size: 20971520
+    excel:
+      allow-types: excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      dir: excel
+      max-size: 20971520

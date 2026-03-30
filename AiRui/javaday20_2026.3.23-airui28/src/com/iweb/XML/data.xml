@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--标准的xml头部，指定xml版本和编码集-->
+<!--标签必须是一对的-->
+<!--根标签只能有一对-->
+
+
+<students>
+    <!--student是嵌套在students里面的标签 id是属性-->
+    <student id="1">
+        <!--name和age是嵌套在student内的标签-->
+        <name>张三</name>
+        <age>28</age>
+    </student>
+    <student id="2">
+        <!--name和age是嵌套在student内的标签-->
+        <name>李四</name>
+        <age>8</age>
+    </student>
+    <student id="3">
+        <!--name和age是嵌套在student内的标签-->
+        <name>王五</name>
+        <age>26</age>
+    </student>
+</students>

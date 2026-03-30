@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="commons-codec-1.16.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../iweb/mysql/commons-codec-1.16.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../iweb/mysql/jBCrypt-0.4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../iweb/mysql/mysql-connector-j-8.0.33.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

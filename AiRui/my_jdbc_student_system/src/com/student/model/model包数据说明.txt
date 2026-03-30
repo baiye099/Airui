@@ -1,0 +1,31 @@
+model包代码说明
+
+model层 穿插在三层之间，用于传递数据的数据模型
+    上层传参给下层
+    下层返回给上层
+
+
+
+model包称为数据模型包
+数据模型类 对应数据表 结构
+类名 映射 表明
+成员变量名 映射 表的字段名
+对成员变量进行private封装，并提供setter/getter方法
+
+命名规范：
+java类名：大驼峰，变量名：小驼峰
+数据库命名：全小写+下划线
+
+数据从数据库中查出来，需要用Java对象进行存储
+数据在硬盘
+Java对象在内存
+Java中一个模型对象，可以存储对应结构表中的一行数据
+User user=new User（）;//user对象可以存储User表的一行数据
+List<User> userList=new ArrayList();
+userList.add(user);//先把一行数据存储到user对象，再把user对象存储到list集合
+userList.add(user);
+userList.add(user);
+userList.add(user);
+userList.add(user);
+userList.add(user);
+//dao测不过查出，存储到list，返回给service层连接关闭事务关闭然后，返回到控制器层展示集合中的
