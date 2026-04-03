@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--xml文件固定文件头-->
+
+
+<!-- 1. 根标签：namespace 必须对应 接口全类名 -->
+<!--绑定根标签-->
+<mapper namespace="org.example.mybatis.mapper.UserMapper">
+    <!-- ==================== 5. 新增标签 ==================== -->
+    <insert id="insert" parameterType="org.example.mybatis.entity.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user (name, age, email)
+        VALUES (#{u.name}, #{u.age}, #{u.email})
+    </insert>
+
+</mapper>

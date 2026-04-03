@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--xml文件固定文件头-->
+
+
+<!-- 1. 根标签：namespace 必须对应 接口全类名 -->
+<!--绑定根标签-->
+<mapper namespace="org.example.mybatis.mapper.OrderRelationMapper">
+    <!--[resultMap一对多结果映射，订单+明细]-->
+<!--    id=“映射名” type=“实体类的全路径”-->
+<!--    column=“数据库列名”property=“实体类的属性名”-->
+    <resultMap id="OrderResultMap" type="org.example.mybatis.entity.Order">
+        <id column="id" property="id"/>
+        <result column="order_no" property="orderNo"/>
+        <result column="user_id" property="userId"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="order_status" property="orderStatus"/>
+        <result column="create_time" property="createTime"/>
+<!--        collection对于映射子表的多行结果到实体类的List-->
+<!--        property实体类中的List结合名 ofType=“List”结合的泛型-->
+        <collection property="orderItemList" ofType="org.example.mybatis.entity.OrderItem">
+            <id column="i_id" property="id"/>
+            <result column="order_id" property="orderId"/>
+            <result column="product_name" property="productName"/>
+            <result column="product_price" property="productPrice"/>
+            <result column="product_num" property="productNum"/>
+        </collection>
+    </resultMap>
+<!--编写多表查询语，并绑定结果映射规则-->
+    <select id="selectOrderListWithOrderItem" resultMap="OrderResultMap">
+        select o.id,
+               o.order_no,
+               o.user_id,
+               o.total_amount,
+               o.order_status,
+               o.create_time,
+               i.id as i_id,
+               i.order_id,
+               i.product_name,
+               i.product_price,
+               i.product_num
+        from t_order as o
+                 join t_order_item as i
+                      on o.id = i.order_id
+    </select>
+    <resultMap id="OrderStatsGroupByStatusMap" type="stats.OrderStats">
+        <result column="order_count" property="orderCount"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="total_productNum" property="totalProductNum"/>
+        <result column="order_stats" property="orderStatus"/>
+    </resultMap>
+    <select id="selectOrderStatsGroupByStatus" resultType="stats.OrderStats">
+        select count(*)as order_count,
+               sum(o.total_amount)as total_amount,
+               sum(i.product_num) as total_product_num,
+               o.order_status
+        from t_order as o
+                 join t_order_item as i
+                      on o.id = i.order_id
+        group by o.order_status
+        order by o.order_status;
+    </select>
+
+
+</mapper>
